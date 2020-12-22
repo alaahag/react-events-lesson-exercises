@@ -2,11 +2,19 @@ import React, { Component } from 'react';
 
 class Conversation extends Component {
   //should recieve the prop "convo"
+  displayConvo = () => {
+    this.props.displayConvo(null)
+  }
   render() {
     return (
-      <div >
-        {/* should render an array of messages, 
-        with each message in a separate div */}
+      <div>
+        <button className="back" onClick={this.displayConvo}>Back</button>
+        {
+          /* should render an array of messages, 
+          with each message in a separate div */
+          
+          this.props.convo.convo.map(m => <div><span className="sender">{m.sender === "self" ? "Me" : this.props.sender}: </span>{m.text}</div>)
+        }
 
         {/* You should wrap the sender in span with the class "sender" */}
         {/* When the sender is other you should display 
